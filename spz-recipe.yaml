@@ -1,0 +1,235 @@
+name: SPiceZ-Core
+version: "1.0.0"
+author: SPiceZ-Core
+description: >
+  An open source racing core for FiveM. Installs spz-lib, spz-core,
+  spz-identity, spz-vehicles, spz-races, spz-progression, spz-hud,
+  oxmysql and ox_lib. Pure racing — no jobs, no housing, no bloat.
+variables:
+  spzDebug: "false"
+
+tasks:
+  # ── 1. Default CFX resources ─────────────────────────────────────────────
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: resources
+    dest: ./resources/[cfx-default]
+
+  # ── 2. Database ───────────────────────────────────────────────────────────
+  - action: connect_database
+
+  - action: query_database
+    query: |
+      CREATE TABLE IF NOT EXISTS players (
+        id               INT           AUTO_INCREMENT PRIMARY KEY,
+        identifier       VARCHAR(64)   NOT NULL UNIQUE,
+        name             VARCHAR(64)   NOT NULL,
+        playtime         INT           DEFAULT 0,
+        xp               INT           DEFAULT 0,
+        class_points     INT           DEFAULT 0,
+        alltime_points   INT           DEFAULT 0,
+        sr               FLOAT         DEFAULT 2.0,
+        i_rating         INT           DEFAULT 1500,
+        rank             VARCHAR(8)    DEFAULT 'C-5',
+        license_tier     TINYINT       DEFAULT 0,
+        top3_count       INT           DEFAULT 0,
+        crew_id          INT           NULL,
+        credits          INT           DEFAULT 0,
+        banned           TINYINT       DEFAULT 0,
+        ban_reason       VARCHAR(255)  NULL,
+        created_at       TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
+        last_seen        TIMESTAMP     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        INDEX idx_identifier (identifier),
+        INDEX idx_rank       (rank),
+        INDEX idx_license    (license_tier)
+      );
+
+      CREATE TABLE IF NOT EXISTS crews (
+        id          INT           AUTO_INCREMENT PRIMARY KEY,
+        name        VARCHAR(64)   NOT NULL UNIQUE,
+        tag         VARCHAR(4)    NOT NULL,
+        owner_id    INT           NOT NULL,
+        created_at  TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (owner_id) REFERENCES players(id)
+      );
+
+      CREATE TABLE IF NOT EXISTS driver_licenses (
+        id           INT         AUTO_INCREMENT PRIMARY KEY,
+        player_id    INT         NOT NULL,
+        tier         TINYINT     NOT NULL,
+        unlocked_at  TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
+        method       VARCHAR(32) DEFAULT 'xp_threshold',
+        FOREIGN KEY (player_id) REFERENCES players(id),
+        INDEX idx_player (player_id)
+      );
+
+      CREATE TABLE IF NOT EXISTS vehicle_customizations (
+        id         INT         AUTO_INCREMENT PRIMARY KEY,
+        player_id  INT         NOT NULL,
+        model      VARCHAR(64) NOT NULL,
+        preset     JSON        NOT NULL,
+        updated_at TIMESTAMP   DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        created_at TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE KEY uq_player_model (player_id, model),
+        FOREIGN KEY (player_id) REFERENCES players(id),
+        INDEX idx_player (player_id)
+      );
+
+      CREATE TABLE IF NOT EXISTS race_sessions (
+        id           INT         AUTO_INCREMENT PRIMARY KEY,
+        race_id      VARCHAR(64) NOT NULL UNIQUE,
+        track        VARCHAR(64) NOT NULL,
+        car_class    TINYINT     NOT NULL,
+        player_count TINYINT     NOT NULL,
+        duration_ms  INT,
+        created_at   TIMESTAMP   DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE TABLE IF NOT EXISTS race_results (
+        id             INT         AUTO_INCREMENT PRIMARY KEY,
+        race_id        VARCHAR(64) NOT NULL,
+        player_id      INT         NOT NULL,
+        position       TINYINT     NOT NULL,
+        finish_time    INT,
+        best_lap       INT,
+        points_earned  INT         DEFAULT 0,
+        sr_change      FLOAT       DEFAULT 0,
+        irating_change INT         DEFAULT 0,
+        personal_best  TINYINT     DEFAULT 0,
+        dnf            TINYINT     DEFAULT 0,
+        created_at     TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (player_id) REFERENCES players(id),
+        INDEX idx_race   (race_id),
+        INDEX idx_player (player_id)
+      );
+
+      CREATE TABLE IF NOT EXISTS track_records (
+        id         INT         AUTO_INCREMENT PRIMARY KEY,
+        track      VARCHAR(64) NOT NULL,
+        car_class  TINYINT     NOT NULL,
+        player_id  INT         NOT NULL,
+        best_time  INT         NOT NULL,
+        set_at     TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (player_id) REFERENCES players(id),
+        UNIQUE KEY uq_track_class_player (track, car_class, player_id),
+        INDEX idx_track (track, car_class)
+      );
+
+      CREATE TABLE IF NOT EXISTS economy_transactions (
+        id         INT          AUTO_INCREMENT PRIMARY KEY,
+        player_id  INT          NOT NULL,
+        amount     INT          NOT NULL,
+        balance    INT          NOT NULL,
+        reason     VARCHAR(128),
+        created_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (player_id) REFERENCES players(id),
+        INDEX idx_player (player_id)
+      );
+
+  # ── 3. Dependencies ───────────────────────────────────────────────────────
+
+  # oxmysql
+  - action: download_file
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+    path: ./tmp/oxmysql.zip
+  - action: unzip
+    src: ./tmp/oxmysql.zip
+    dest: ./resources/[dependencies]
+
+  # ox_lib
+  - action: download_github
+    src: https://github.com/overextended/ox_lib
+    dest: ./resources/[dependencies]/ox_lib
+
+  # ── 4. SPiceZ-Core modules ────────────────────────────────────────────────
+
+  - action: download_github
+    src: https://github.com/SPiceZ-Core/spz-lib
+    dest: ./resources/[spz]/spz-lib
+
+  - action: download_github
+    src: https://github.com/SPiceZ-Core/spz-core
+    dest: ./resources/[spz]/spz-core
+
+  - action: download_github
+    src: https://github.com/SPiceZ-Core/spz-identity
+    dest: ./resources/[spz]/spz-identity
+
+  - action: download_github
+    src: https://github.com/SPiceZ-Core/spz-vehicles
+    dest: ./resources/[spz]/spz-vehicles
+
+  - action: download_github
+    src: https://github.com/SPiceZ-Core/spz-races
+    dest: ./resources/[spz]/spz-races
+
+  - action: download_github
+    src: https://github.com/SPiceZ-Core/spz-progression
+    dest: ./resources/[spz]/spz-progression
+
+  - action: download_github
+    src: https://github.com/SPiceZ-Core/spz-hud
+    dest: ./resources/[spz]/spz-hud
+
+  # ── 5. server.cfg ─────────────────────────────────────────────────────────
+  - action: write_file
+    path: ./server.cfg
+    content: |
+      # ── Server ─────────────────────────────────────────────────────────────
+      sv_hostname "{{serverName}}"
+      sv_maxclients {{maxClients}}
+      sets tags "racing, spicez"
+      sets banner_detail "https://raw.githubusercontent.com/SPiceZ-Core/.github/main/assets/banner.png"
+
+      # ── Game build ─────────────────────────────────────────────────────────
+      # 3095 = Agents of Sabotage (latest stable, all vehicles available)
+      sv_enforceGameBuild 3095
+
+      # ── License ────────────────────────────────────────────────────────────
+      sv_licenseKey "{{svLicenseKey}}"
+
+      # ── Database ───────────────────────────────────────────────────────────
+      set mysql_connection_string "{{dbConnectionString}}"
+
+      # ── SPiceZ convars ─────────────────────────────────────────────────────
+      set spz_debug "{{spzDebug}}"
+
+      # ── ACE permissions ────────────────────────────────────────────────────
+      add_ace group.admin command allow
+      add_ace group.admin spz.admin allow
+      add_ace group.admin spz.moderator allow
+      add_ace group.admin spz.spectate allow
+      add_ace group.admin spz.dev allow
+      {{addPrincipalsMaster}}
+
+      # ── Default CFX resources ──────────────────────────────────────────────
+      ensure mapmanager
+      ensure chat
+      ensure spawnmanager
+      ensure sessionmanager
+      ensure basic-gamemode
+
+      # ── Dependencies ───────────────────────────────────────────────────────
+      ensure oxmysql
+      ensure ox_lib
+
+      # ── SPiceZ-Core ────────────────────────────────────────────────────────
+      ensure spz-lib
+      ensure spz-core
+
+      # ── Modules ────────────────────────────────────────────────────────────
+      ensure spz-identity
+      ensure spz-vehicles
+      ensure spz-races
+      ensure spz-progression
+      ensure spz-hud
+
+      # ── Disabled until built ────────────────────────────────────────────────
+      # ensure spz-economy
+      # ensure spz-leaderboard
+      # ensure spz-menu
+      # ensure spz-admin
+
+  # ── 6. Cleanup tmp ────────────────────────────────────────────────────────
+  - action: remove_path
+    path: ./tmp
