@@ -176,6 +176,7 @@ tasks:
     file: ./server.cfg
     data: |
       # ── Server ─────────────────────────────────────────────────────────────
+      {{serverEndpoints}}
       sv_hostname "{{serverName}}"
       sv_maxclients {{maxClients}}
       sets tags "racing, spicez"
