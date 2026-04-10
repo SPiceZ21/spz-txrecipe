@@ -42,12 +42,9 @@ tasks:
     dest: ./resources/[dependencies]
 
   # pma-voice (Mumble)
-  - action: download_file
-    url: https://github.com/AvarianKnight/pma-voice/releases/latest/download/pma-voice.zip
-    path: ./tmp/pma-voice.zip
-  - action: unzip
-    src: ./tmp/pma-voice.zip
-    dest: ./resources/[dependencies]
+  - action: download_github
+    src: https://github.com/AvarianKnight/pma-voice
+    dest: ./resources/[dependencies]/pma-voice
 
   # ── 4. SPiceZ-Core modules ────────────────────────────────────────────────
   - action: download_github
