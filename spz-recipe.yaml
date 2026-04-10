@@ -173,8 +173,8 @@ tasks:
 
   # ── 5. server.cfg ─────────────────────────────────────────────────────────
   - action: write_file
-    path: ./server.cfg
-    content: |
+    file: ./server.cfg
+    data: |
       # ── Server ─────────────────────────────────────────────────────────────
       sv_hostname "{{serverName}}"
       sv_maxclients {{maxClients}}
