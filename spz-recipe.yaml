@@ -144,31 +144,31 @@ tasks:
   # ── 4. SPiceZ-Core modules ────────────────────────────────────────────────
 
   - action: download_github
-    src: https://github.com/SPiceZ-Core/spz-lib
+    src: https://github.com/spicez21/spz-lib
     dest: ./resources/[spz]/spz-lib
 
   - action: download_github
-    src: https://github.com/SPiceZ-Core/spz-core
+    src: https://github.com/spicez21/spz-core
     dest: ./resources/[spz]/spz-core
 
   - action: download_github
-    src: https://github.com/SPiceZ-Core/spz-identity
+    src: https://github.com/spicez21/spz-identity
     dest: ./resources/[spz]/spz-identity
 
   - action: download_github
-    src: https://github.com/SPiceZ-Core/spz-vehicles
+    src: https://github.com/spicez21/spz-vehicles
     dest: ./resources/[spz]/spz-vehicles
 
   - action: download_github
-    src: https://github.com/SPiceZ-Core/spz-races
+    src: https://github.com/spicez21/spz-races
     dest: ./resources/[spz]/spz-races
 
   - action: download_github
-    src: https://github.com/SPiceZ-Core/spz-progression
+    src: https://github.com/spicez21/spz-progression
     dest: ./resources/[spz]/spz-progression
 
   - action: download_github
-    src: https://github.com/SPiceZ-Core/spz-hud
+    src: https://github.com/spicez21/spz-hud
     dest: ./resources/[spz]/spz-hud
 
   # ── 5. server.cfg ─────────────────────────────────────────────────────────
