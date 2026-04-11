@@ -80,6 +80,10 @@ tasks:
     src: ./tmp/recipe/Logo.png
     dest: ./Logo.png
 
+  - action: copy_path
+    src: ./tmp/recipe/Banner.png
+    dest: ./Banner.png
+
   - action: write_file
     file: ./server.cfg
     data: |
@@ -95,7 +99,8 @@ tasks:
 
       # ── UI/UX ─────────────────────────────────────────────────────────────
       load_server_icon Logo.png
-      sets banner_detail "https://raw.githubusercontent.com/SPiceZ-Core/.github/main/assets/banner.png"
+      sets banner_detail "Banner.png"
+      sets banner_connecting "Banner.png"
       sv_maxclients {{maxClients}}
 
       # ── Game Build ────────────────────────────────────────────────────────
