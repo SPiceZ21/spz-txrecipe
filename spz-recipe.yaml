@@ -1,32 +1,34 @@
 name: SPiceZ-Core Racing
-version: "2.1.0"
-author: SPiceZ-Core
+version: "2.2.0"
+author: SPiceZ21
 description: >
-  A professional high-performance racing framework for FiveM. 
-  Modularized recipe for cleaner deployment.
+  Open-source, modular racing framework for FiveM.
+  Installs all dependencies, SPZ modules, database schema,
+  and a production-ready server.cfg in one step.
 
 variables:
   spzDebug: "false"
   recipeName: "SPiceZ-Core"
-  recipeDescription: "Advanced Racing Framework"
+  recipeDescription: "Open-source FiveM Racing Framework"
 
 tasks:
-  # ── 1. Preparation ──────────────────────────────────────────────────────────
+  # ── 1. Recipe Assets ─────────────────────────────────────────────────────────
   - action: download_github
-    src: https://github.com/spicez21/spz-txrecipe
+    src: https://github.com/SPiceZ21/spz-txrecipe
     dest: ./tmp/recipe
 
+  # ── 2. Base Server Data ───────────────────────────────────────────────────────
   - action: download_github
     src: https://github.com/citizenfx/cfx-server-data
     subpath: resources
     dest: ./resources/[cfx-default]
 
-  # ── 2. Database ───────────────────────────────────────────────────────────
+  # ── 3. Database ───────────────────────────────────────────────────────────────
   - action: connect_database
   - action: query_database
     file: ./tmp/recipe/spz-core.sql
 
-  # ── 3. Dependencies ───────────────────────────────────────────────────────
+  # ── 4. Dependencies ───────────────────────────────────────────────────────────
   - action: download_file
     url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
     path: ./tmp/oxmysql.zip
@@ -41,41 +43,40 @@ tasks:
     src: ./tmp/ox_lib.zip
     dest: ./resources/[dependencies]
 
-  # pma-voice (Mumble)
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
     dest: ./resources/[dependencies]/pma-voice
 
-  # ── 4. SPiceZ-Core modules ────────────────────────────────────────────────
+  # ── 5. SPiceZ-Core Modules ────────────────────────────────────────────────────
   - action: download_github
-    src: https://github.com/spicez21/spz-lib
+    src: https://github.com/SPiceZ21/spz-lib
     dest: ./resources/[spz]/spz-lib
-  
+
   - action: download_github
-    src: https://github.com/spicez21/spz-core
+    src: https://github.com/SPiceZ21/spz-core
     dest: ./resources/[spz]/spz-core
 
   - action: download_github
-    src: https://github.com/spicez21/spz-identity
+    src: https://github.com/SPiceZ21/spz-identity
     dest: ./resources/[spz]/spz-identity
 
   - action: download_github
-    src: https://github.com/spicez21/spz-vehicles
+    src: https://github.com/SPiceZ21/spz-vehicles
     dest: ./resources/[spz]/spz-vehicles
 
   - action: download_github
-    src: https://github.com/spicez21/spz-races
+    src: https://github.com/SPiceZ21/spz-races
     dest: ./resources/[spz]/spz-races
 
   - action: download_github
-    src: https://github.com/spicez21/spz-progression
+    src: https://github.com/SPiceZ21/spz-progression
     dest: ./resources/[spz]/spz-progression
 
   - action: download_github
-    src: https://github.com/spicez21/spz-hud
+    src: https://github.com/SPiceZ21/spz-hud
     dest: ./resources/[spz]/spz-hud
 
-  # ── 5. Configuration ──────────────────────────────────────────────────────
+  # ── 6. Branding Assets ────────────────────────────────────────────────────────
   - action: copy_path
     src: ./tmp/recipe/Logo.png
     dest: ./Logo.png
@@ -84,37 +85,38 @@ tasks:
     src: ./tmp/recipe/Banner.png
     dest: ./Banner.png
 
+  # ── 7. server.cfg ─────────────────────────────────────────────────────────────
   - action: write_file
     file: ./server.cfg
     data: |
-      # ── Server Endpoints ──────────────────────────────────────────────────
+      # ── Server Endpoints ──────────────────────────────────────────────────────
       {{serverEndpoints}}
 
-      # ── Server Identification ─────────────────────────────────────────────
+      # ── Server Identity ───────────────────────────────────────────────────────
       sv_hostname "{{serverName}}"
       sets sv_projectName "[{{recipeName}}] {{serverName}}"
       sets sv_projectDesc "{{recipeDescription}}"
-      sets tags "racing, spicez, spz, c-pro"
-      sets locale "root-AQ" 
+      sets tags "racing, spicez, spz"
+      sets locale "root-AQ"
 
-      # ── UI/UX ─────────────────────────────────────────────────────────────
+      # ── Branding ──────────────────────────────────────────────────────────────
       load_server_icon Logo.png
-      sets banner_detail "Banner.png"
-      sets banner_connecting "Banner.png"
-      sv_maxclients {{maxClients}}
+      sets banner_detail Banner.png
+      sets banner_connecting Banner.png
 
-      # ── Game Build ────────────────────────────────────────────────────────
-      sv_enforceGameBuild 3095 
+      # ── Slots & Build ─────────────────────────────────────────────────────────
+      sv_maxclients {{maxClients}}
+      sv_enforceGameBuild 3095
       set resources_useSystemChat true
 
-      # ── License & Database ────────────────────────────────────────────────
+      # ── License & Database ────────────────────────────────────────────────────
       sv_licenseKey "{{svLicenseKey}}"
       set mysql_connection_string "{{dbConnectionString}}"
 
-      # ── SPiceZ Convars ────────────────────────────────────────────────────
+      # ── SPiceZ Convars ────────────────────────────────────────────────────────
       set spz_debug "{{spzDebug}}"
 
-      # ── Voice Configuration ───────────────────────────────────────────────
+      # ── Voice (pma-voice) ─────────────────────────────────────────────────────
       setr voice_useNativeAudio true
       setr voice_useSendingRangeOnly true
       setr voice_defaultCycle "GRAVE"
@@ -122,7 +124,7 @@ tasks:
       setr voice_enableRadioAnim 1
       setr voice_syncData 1
 
-      # ── Default CFX Resources ─────────────────────────────────────────────
+      # ── CFX Default Resources ─────────────────────────────────────────────────
       ensure mapmanager
       ensure chat
       ensure spawnmanager
@@ -131,33 +133,30 @@ tasks:
       ensure hardcap
       ensure baseevents
 
-      # ── Dependencies ──────────────────────────────────────────────────────
+      # ── Dependencies ──────────────────────────────────────────────────────────
       ensure oxmysql
       ensure ox_lib
       ensure pma-voice
 
-      # ── SPiceZ-Core Framework ─────────────────────────────────────────────
+      # ── SPiceZ-Core Framework ─────────────────────────────────────────────────
       ensure spz-lib
       ensure spz-core
 
-      # ── Racing Modules ────────────────────────────────────────────────────
+      # ── Racing Modules ────────────────────────────────────────────────────────
       ensure spz-identity
       ensure spz-vehicles
       ensure spz-races
       ensure spz-progression
       ensure spz-hud
 
-      # ── Permissions ───────────────────────────────────────────────────────
-      add_ace group.admin command allow 
+      # ── Permissions ───────────────────────────────────────────────────────────
+      add_ace group.admin command allow
       add_ace group.admin spz.admin allow
       add_ace group.admin spz.moderator allow
       add_ace group.admin spz.spectate allow
       add_ace group.admin spz.dev allow
       {{addPrincipalsMaster}}
 
-      # ── Inheritance ───────────────────────────────────────────────────────
-      add_principal qbcore.god group.admin 
-
-  # ── 6. Finalization ───────────────────────────────────────────────────────
+  # ── 8. Cleanup ────────────────────────────────────────────────────────────────
   - action: remove_path
     path: ./tmp
