@@ -56,7 +56,7 @@ After running the recipe, you'll have a production-ready racing server with all 
 All core `spz-*` modules installed in the correct load order:
 
 ```
-spz-lib → spz-core → spz-identity → spz-vehicles → spz-races → spz-progression → spz-hud
+spz-lib → spz-loading → spz-core → spz-identity → spz-vehicles → spz-races → spz-progression → spz-hud
 ```
 
 ### Database Initialization
@@ -107,6 +107,7 @@ ensure screenshot-basic        # optional
 
 # ── SPiceZ Core ───────────────────────────────────────
 ensure spz-lib
+ensure spz-loading
 ensure spz-core
 
 # ── Modules ───────────────────────────────────────────

@@ -1,5 +1,5 @@
 name: SPiceZ-Core Racing
-version: "2.2.0"
+version: "2.3.0"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
@@ -51,6 +51,10 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-lib
     dest: ./resources/[spz]/spz-lib
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-loading
+    dest: ./resources/[spz]/spz-loading
 
   - action: download_github
     src: https://github.com/SPiceZ21/spz-core
@@ -140,6 +144,7 @@ tasks:
 
       # ── SPiceZ-Core Framework ─────────────────────────────────────────────────
       ensure spz-lib
+      ensure spz-loading
       ensure spz-core
 
       # ── Racing Modules ────────────────────────────────────────────────────────
