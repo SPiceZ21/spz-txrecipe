@@ -96,9 +96,9 @@ tasks:
     src: https://github.com/SPiceZ21/spz-menu
     dest: ./resources/[spz]/spz-menu
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-admin
-    dest: ./resources/[spz]/spz-admin
+# - action: download_github
+#   src: https://github.com/SPiceZ21/spz-admin
+#   dest: ./resources/[spz]/spz-admin
 
   # ── 6. Branding Assets ────────────────────────────────────────────────────────
   - action: copy_path
