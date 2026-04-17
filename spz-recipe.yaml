@@ -120,6 +120,10 @@ tasks:
       # ── Server Endpoints ──────────────────────────────────────────────────────
       {{serverEndpoints}}
 
+      # ── License & Database ────────────────────────────────────────────────────
+      sv_licenseKey "{{svLicenseKey}}"
+      set mysql_connection_string "{{dbConnectionString}}"
+
       # ── Server Identity ───────────────────────────────────────────────────────
       sv_hostname "{{serverName}}"
       sets sv_projectName "[{{recipeName}}] {{serverName}}"
@@ -129,17 +133,13 @@ tasks:
 
       # ── Branding ──────────────────────────────────────────────────────────────
       load_server_icon Logo.png
-      sets banner_detail Banner.png
-      sets banner_connecting Banner.png
+      sets banner_detail "https://raw.githubusercontent.com/SPiceZ21/spz-txrecipe/main/Banner.png"
+      sets banner_connecting "https://raw.githubusercontent.com/SPiceZ21/spz-txrecipe/main/Banner.png"
 
       # ── Slots & Build ─────────────────────────────────────────────────────────
       sv_maxclients {{maxClients}}
       sv_enforceGameBuild 3407
       set resources_useSystemChat true
-
-      # ── License & Database ────────────────────────────────────────────────────
-      sv_licenseKey "{{svLicenseKey}}"
-      set mysql_connection_string "{{dbConnectionString}}"
 
       # ── SPiceZ Convars ────────────────────────────────────────────────────────
       set spz_debug "{{spzDebug}}"
