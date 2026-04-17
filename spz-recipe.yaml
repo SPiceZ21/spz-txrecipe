@@ -1,5 +1,5 @@
 name: SPiceZ-Core Racing
-version: "2.3.1"
+version: "2.3.2"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
@@ -177,7 +177,6 @@ tasks:
       ensure spz-progression
       ensure spz-hud
       ensure spz-menu
-      ensure spz-admin
 
       # ── Permissions ───────────────────────────────────────────────────────────
       add_ace group.admin command allow
