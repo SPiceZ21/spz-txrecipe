@@ -1,5 +1,5 @@
 name: SPiceZ-Core Racing
-version: "2.3.0"
+version: "2.3.1"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
@@ -65,12 +65,24 @@ tasks:
     dest: ./resources/[spz]/spz-identity
 
   - action: download_github
+    src: https://github.com/SPiceZ21/spz-appearance
+    dest: ./resources/[spz]/spz-appearance
+
+  - action: download_github
     src: https://github.com/SPiceZ21/spz-vehicles
     dest: ./resources/[spz]/spz-vehicles
 
   - action: download_github
+    src: https://github.com/SPiceZ21/spz-physics
+    dest: ./resources/[spz]/spz-physics
+
+  - action: download_github
     src: https://github.com/SPiceZ21/spz-races
     dest: ./resources/[spz]/spz-races
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-leaderboard
+    dest: ./resources/[spz]/spz-leaderboard
 
   - action: download_github
     src: https://github.com/SPiceZ21/spz-progression
@@ -79,6 +91,14 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-hud
     dest: ./resources/[spz]/spz-hud
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-menu
+    dest: ./resources/[spz]/spz-menu
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-admin
+    dest: ./resources/[spz]/spz-admin
 
   # ── 6. Branding Assets ────────────────────────────────────────────────────────
   - action: copy_path
@@ -110,7 +130,7 @@ tasks:
 
       # ── Slots & Build ─────────────────────────────────────────────────────────
       sv_maxclients {{maxClients}}
-      sv_enforceGameBuild 3095
+      sv_enforceGameBuild 3407
       set resources_useSystemChat true
 
       # ── License & Database ────────────────────────────────────────────────────
@@ -149,10 +169,15 @@ tasks:
 
       # ── Racing Modules ────────────────────────────────────────────────────────
       ensure spz-identity
+      ensure spz-appearance
       ensure spz-vehicles
+      ensure spz-physics
       ensure spz-races
+      ensure spz-leaderboard
       ensure spz-progression
       ensure spz-hud
+      ensure spz-menu
+      ensure spz-admin
 
       # ── Permissions ───────────────────────────────────────────────────────────
       add_ace group.admin command allow
