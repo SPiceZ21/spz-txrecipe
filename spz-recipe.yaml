@@ -1,5 +1,5 @@
 name: SPiceZ-Core Racing
-version: "2.3.2"
+version: "2.3.3"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
@@ -46,6 +46,10 @@ tasks:
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
     dest: ./resources/[dependencies]/pma-voice
+
+  - action: download_github
+    src: https://github.com/citizenfx/screenshot-basic
+    dest: ./resources/[dependencies]/screenshot-basic
 
   # ── 5. SPiceZ-Core Modules ────────────────────────────────────────────────────
   - action: download_github
@@ -161,6 +165,7 @@ tasks:
       ensure oxmysql
       ensure ox_lib
       ensure pma-voice
+      ensure screenshot-basic
 
       # ── SPiceZ-Core Framework ─────────────────────────────────────────────────
       ensure spz-lib
