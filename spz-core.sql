@@ -4,7 +4,10 @@
 CREATE TABLE IF NOT EXISTS `players` (
   `id`               INT           AUTO_INCREMENT PRIMARY KEY,
   `identifier`       VARCHAR(64)   NOT NULL UNIQUE,
-  `name`             VARCHAR(64)   NOT NULL,
+  `citizen_id`       VARCHAR(16)   NOT NULL UNIQUE,
+  `username`         VARCHAR(64)   NULL,
+  `gender`           TINYINT       NULL,
+  `first_time`       TINYINT       DEFAULT 1,
   `playtime`         INT           DEFAULT 0,
   `xp`               INT           DEFAULT 0,
   `class_points`     INT           DEFAULT 0,
@@ -21,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `created_at`       TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
   `last_seen`        TIMESTAMP     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   INDEX idx_identifier (identifier),
+  INDEX idx_citizen_id  (citizen_id),
   INDEX idx_rank       (rank),
   INDEX idx_license    (license_tier)
 );
