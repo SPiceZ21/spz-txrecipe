@@ -37,11 +37,11 @@ tasks:
     dest: ./resources/[dependencies]
 
   - action: download_file
-    url: https://github.com/TomGrobbe/vMenu/releases/latest/download/vMenu.zip
+    url: https://github.com/TomGrobbe/vMenu/releases/download/v3.8.8/vMenu-3.8.8.zip
     path: ./tmp/vMenu.zip
   - action: unzip
     src: ./tmp/vMenu.zip
-    dest: ./resources/[admin]
+    dest: ./resources/vMenu
 
   - action: download_file
     url: https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip
@@ -198,7 +198,7 @@ tasks:
       ensure vMenu
 
       # ── Permissions ───────────────────────────────────────────────────────────
-      exec permissions.cfg
+      exec @vMenu/config/permissions.cfg
       add_ace group.admin command allow
       add_ace group.admin spz.admin allow
       add_ace group.admin spz.moderator allow
