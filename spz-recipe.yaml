@@ -37,6 +37,13 @@ tasks:
     dest: ./resources/[dependencies]
 
   - action: download_file
+    url: https://github.com/TomGrobbe/vMenu/releases/latest/download/vMenu.zip
+    path: ./tmp/vMenu.zip
+  - action: unzip
+    src: ./tmp/vMenu.zip
+    dest: ./resources/[admin]
+
+  - action: download_file
     url: https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip
     path: ./tmp/ox_lib.zip
   - action: unzip
@@ -108,6 +115,10 @@ tasks:
   - action: copy_path
     src: ./tmp/recipe/Logo.png
     dest: ./Logo.png
+
+  - action: copy_path
+    src: ./tmp/recipe/permissions.cfg
+    dest: ./permissions.cfg
 
   - action: copy_path
     src: ./tmp/recipe/Banner.png
@@ -183,7 +194,11 @@ tasks:
       ensure spz-hud
       ensure spz-menu
 
+      # ── Admin Tools ───────────────────────────────────────────────────────────
+      ensure vMenu
+
       # ── Permissions ───────────────────────────────────────────────────────────
+      exec permissions.cfg
       add_ace group.admin command allow
       add_ace group.admin spz.admin allow
       add_ace group.admin spz.moderator allow
