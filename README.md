@@ -123,7 +123,6 @@ ensure spz-weather             # optional
 
 # ── UI ────────────────────────────────────────────────
 ensure spz-hud
-ensure spz-menu
 
 # ── Admin (always last) ───────────────────────────────
 ensure spz-admin
