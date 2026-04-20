@@ -103,9 +103,6 @@ tasks:
     src: https://github.com/SPiceZ21/spz-hud
     dest: ./resources/[spz]/spz-hud
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-menu
-    dest: ./resources/[spz]/spz-menu
 
 # - action: download_github
 #   src: https://github.com/SPiceZ21/spz-admin
@@ -192,7 +189,6 @@ tasks:
       ensure spz-leaderboard
       ensure spz-progression
       ensure spz-hud
-      ensure spz-menu
 
       # ── Admin Tools ───────────────────────────────────────────────────────────
       ensure vMenu
