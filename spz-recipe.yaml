@@ -104,10 +104,6 @@ tasks:
     dest: ./resources/[spz]/spz-progression
 
   - action: download_github
-    src: https://github.com/SPiceZ21/spz-hud
-    dest: ./resources/[spz]/spz-hud
-
-  - action: download_github
     src: https://github.com/SPiceZ21/spz-poll
     dest: ./resources/[spz]/spz-poll
 
@@ -118,6 +114,14 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-carspawner
     dest: ./resources/[spz]/spz-carspawner
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-nametag
+    dest: ./resources/[spz]/spz-nametag
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-speedometer
+    dest: ./resources/[spz]/spz-speedometer
 
 
 # - action: download_github
