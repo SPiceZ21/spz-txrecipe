@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS `players` (
   `credits`          INT           DEFAULT 0,
   `banned`           TINYINT       DEFAULT 0,
   `ban_reason`       VARCHAR(255)  NULL,
+  `avatar_url`       TEXT          NULL,
+  `banner_url`       TEXT          NULL,
   `created_at`       TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
   `last_seen`        TIMESTAMP     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   INDEX idx_identifier (identifier),
