@@ -72,6 +72,10 @@ tasks:
     dest: ./resources/[spz]/spz-core
 
   - action: download_github
+    src: https://github.com/SPiceZ21/spz-spawn
+    dest: ./resources/[spz]/spz-spawn
+
+  - action: download_github
     src: https://github.com/SPiceZ21/spz-identity
     dest: ./resources/[spz]/spz-identity
 
@@ -103,6 +107,18 @@ tasks:
     src: https://github.com/SPiceZ21/spz-hud
     dest: ./resources/[spz]/spz-hud
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-poll
+    dest: ./resources/[spz]/spz-poll
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-raceUI
+    dest: ./resources/[spz]/spz-raceUI
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-carspawner
+    dest: ./resources/[spz]/spz-carspawner
+
 
 # - action: download_github
 #   src: https://github.com/SPiceZ21/spz-admin
@@ -122,85 +138,9 @@ tasks:
     dest: ./Banner.png
 
   # ── 7. server.cfg ─────────────────────────────────────────────────────────────
-  - action: write_file
-    file: ./server.cfg
-    data: |
-      # ── Server Endpoints ──────────────────────────────────────────────────────
-      {{serverEndpoints}}
-
-      # ── License & Database ────────────────────────────────────────────────────
-      sv_licenseKey "{{svLicenseKey}}"
-      set mysql_connection_string "{{dbConnectionString}}"
-
-      # ── Server Identity ───────────────────────────────────────────────────────
-      sv_hostname "{{serverName}}"
-      sets sv_projectName "[{{recipeName}}] {{serverName}}"
-      sets sv_projectDesc "{{recipeDescription}}"
-      sets tags "racing, spicez, spz"
-      sets locale "root-AQ"
-
-      # ── Branding ──────────────────────────────────────────────────────────────
-      load_server_icon Logo.png
-      sets banner_detail "https://raw.githubusercontent.com/SPiceZ21/spz-txrecipe/main/Banner.png"
-      sets banner_connecting "https://raw.githubusercontent.com/SPiceZ21/spz-txrecipe/main/Banner.png"
-
-      # ── Slots & Build ─────────────────────────────────────────────────────────
-      sv_maxclients {{maxClients}}
-      sv_enforceGameBuild 3407
-      set resources_useSystemChat true
-
-      # ── SPiceZ Convars ────────────────────────────────────────────────────────
-      set spz_debug "{{spzDebug}}"
-
-      # ── Voice (pma-voice) ─────────────────────────────────────────────────────
-      setr voice_useNativeAudio true
-      setr voice_useSendingRangeOnly true
-      setr voice_defaultCycle "GRAVE"
-      setr voice_defaultVolume 0.3
-      setr voice_enableRadioAnim 1
-      setr voice_syncData 1
-
-      # ── CFX Default Resources ─────────────────────────────────────────────────
-      ensure mapmanager
-      ensure chat
-      ensure spawnmanager
-      ensure sessionmanager
-      ensure basic-gamemode
-      ensure hardcap
-      ensure baseevents
-
-      # ── Dependencies ──────────────────────────────────────────────────────────
-      ensure oxmysql
-      ensure ox_lib
-      ensure pma-voice
-      ensure screenshot-basic
-
-      # ── SPiceZ-Core Framework ─────────────────────────────────────────────────
-      ensure spz-lib
-      ensure spz-loading
-      ensure spz-core
-
-      # ── Racing Modules ────────────────────────────────────────────────────────
-      ensure spz-identity
-      ensure spz-appearance
-      ensure spz-vehicles
-      ensure spz-physics
-      ensure spz-races
-      ensure spz-leaderboard
-      ensure spz-progression
-      ensure spz-hud
-
-      # ── Admin Tools ───────────────────────────────────────────────────────────
-      ensure vMenu
-
-      # ── Permissions ───────────────────────────────────────────────────────────
-      exec @vMenu/config/permissions.cfg
-      add_ace group.admin command allow
-      add_ace group.admin spz.admin allow
-      add_ace group.admin spz.moderator allow
-      add_ace group.admin spz.spectate allow
-      add_ace group.admin spz.dev allow
-      {{addPrincipalsMaster}}
+  - action: copy_path
+    src: ./tmp/recipe/server.cfg
+    dest: ./server.cfg
 
   # ── 8. Cleanup ────────────────────────────────────────────────────────────────
   - action: remove_path
