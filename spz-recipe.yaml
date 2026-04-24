@@ -123,6 +123,10 @@ tasks:
     src: https://github.com/SPiceZ21/spz-speedometer
     dest: ./resources/[spz]/spz-speedometer
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-nos
+    dest: ./resources/[spz]/spz-nos
+
 
 # - action: download_github
 #   src: https://github.com/SPiceZ21/spz-admin
