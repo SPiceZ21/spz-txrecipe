@@ -134,3 +134,11 @@ ALTER TABLE race_results ADD COLUMN IF NOT EXISTS dnf_reason VARCHAR(32) NULL AF
 
 ALTER TABLE track_records ADD COLUMN IF NOT EXISTS track_type VARCHAR(16) NOT NULL AFTER track;
 ALTER TABLE track_records ADD COLUMN IF NOT EXISTS best_lap INT AFTER best_time;
+
+-- SPiceZ Stance System
+CREATE TABLE IF NOT EXISTS `spz_stance` (
+  `plate` VARCHAR(12) NOT NULL PRIMARY KEY,
+  `setting` LONGTEXT DEFAULT '[]',
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_plate (plate)
+);
