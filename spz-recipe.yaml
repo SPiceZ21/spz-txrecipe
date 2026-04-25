@@ -127,6 +127,14 @@ tasks:
     src: https://github.com/SPiceZ21/spz-nos
     dest: ./resources/[spz]/spz-nos
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-rpc
+    dest: ./resources/[spz]/spz-rpc
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-stance
+    dest: ./resources/[spz]/spz-stance
+
 
 # - action: download_github
 #   src: https://github.com/SPiceZ21/spz-admin

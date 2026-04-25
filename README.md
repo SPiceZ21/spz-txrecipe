@@ -56,7 +56,7 @@ After running the recipe, you'll have a production-ready racing server with all 
 All core `spz-*` modules installed in the correct load order:
 
 ```
-spz-lib → spz-loading → spz-core → spz-identity → spz-vehicles → spz-races → spz-progression → spz-hud
+spz-lib → spz-rpc → spz-loading → spz-core → spz-identity → spz-vehicles → spz-races → spz-progression → spz-raceUI → spz-stance
 ```
 
 ### Database Initialization
@@ -73,6 +73,7 @@ Creates 8 essential tables:
 | `race_results` | Per-player race results |
 | `track_records` | Personal bests per track and class |
 | `owned_vehicles` | Garage vehicle registry |
+| `spz_stance` | Vehicle stance and suspension settings |
 
 ### Auto-Generated `server.cfg`
 
@@ -107,6 +108,7 @@ ensure screenshot-basic        # optional
 
 # ── SPiceZ Core ───────────────────────────────────────
 ensure spz-lib
+ensure spz-rpc
 ensure spz-loading
 ensure spz-core
 
@@ -119,6 +121,8 @@ ensure spz-tuning
 ensure spz-races
 ensure spz-progression
 ensure spz-leaderboard
+ensure spz-nos
+ensure spz-stance
 ensure spz-weather             # optional
 
 # ── UI ────────────────────────────────────────────────
