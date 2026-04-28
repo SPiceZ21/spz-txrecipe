@@ -63,16 +63,23 @@ tasks:
     src: https://github.com/SPiceZ21/spz-lib
     dest: ./resources/[spz]/spz-lib
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-loading
+  # Modules with Production Releases (UI Built)
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-loading/releases/latest/download/spz-loading.zip
+    path: ./tmp/spz-loading.zip
+  - action: unzip
+    src: ./tmp/spz-loading.zip
     dest: ./resources/[spz]/spz-loading
 
   - action: download_github
     src: https://github.com/SPiceZ21/spz-core
     dest: ./resources/[spz]/spz-core
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-spawn
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-spawn/releases/latest/download/spz-spawn.zip
+    path: ./tmp/spz-spawn.zip
+  - action: unzip
+    src: ./tmp/spz-spawn.zip
     dest: ./resources/[spz]/spz-spawn
 
   - action: download_github
@@ -95,32 +102,50 @@ tasks:
     src: https://github.com/SPiceZ21/spz-races
     dest: ./resources/[spz]/spz-races
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-leaderboard
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-leaderboard/releases/latest/download/spz-leaderboard.zip
+    path: ./tmp/spz-leaderboard.zip
+  - action: unzip
+    src: ./tmp/spz-leaderboard.zip
     dest: ./resources/[spz]/spz-leaderboard
 
   - action: download_github
     src: https://github.com/SPiceZ21/spz-progression
     dest: ./resources/[spz]/spz-progression
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-poll
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-poll/releases/latest/download/spz-poll.zip
+    path: ./tmp/spz-poll.zip
+  - action: unzip
+    src: ./tmp/spz-poll.zip
     dest: ./resources/[spz]/spz-poll
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-raceUI
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-raceUI/releases/latest/download/spz-raceUI.zip
+    path: ./tmp/spz-raceUI.zip
+  - action: unzip
+    src: ./tmp/spz-raceUI.zip
     dest: ./resources/[spz]/spz-raceUI
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-carspawner
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-carspawner/releases/latest/download/spz-carspawner.zip
+    path: ./tmp/spz-carspawner.zip
+  - action: unzip
+    src: ./tmp/spz-carspawner.zip
     dest: ./resources/[spz]/spz-carspawner
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-nametag
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-nametag/releases/latest/download/spz-nametag.zip
+    path: ./tmp/spz-nametag.zip
+  - action: unzip
+    src: ./tmp/spz-nametag.zip
     dest: ./resources/[spz]/spz-nametag
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-speedometer
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-speedometer/releases/latest/download/spz-speedometer.zip
+    path: ./tmp/spz-speedometer.zip
+  - action: unzip
+    src: ./tmp/spz-speedometer.zip
     dest: ./resources/[spz]/spz-speedometer
 
   - action: download_github
@@ -131,8 +156,11 @@ tasks:
     src: https://github.com/SPiceZ21/spz-rpc
     dest: ./resources/[spz]/spz-rpc
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-stance
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-stance/releases/latest/download/spz-stance.zip
+    path: ./tmp/spz-stance.zip
+  - action: unzip
+    src: ./tmp/spz-stance.zip
     dest: ./resources/[spz]/spz-stance
 
 
