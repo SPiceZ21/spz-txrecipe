@@ -94,13 +94,6 @@ tasks:
     src: https://github.com/SPiceZ21/spz-vehicles
     dest: ./resources/[spz]/spz-vehicles
 
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-physics/releases/latest/download/spz-physics.zip
-    path: ./tmp/spz-physics.zip
-  - action: unzip
-    src: ./tmp/spz-physics.zip
-    dest: ./resources/[spz]
-
   - action: download_github
     src: https://github.com/SPiceZ21/spz-races
     dest: ./resources/[spz]/spz-races
@@ -158,6 +151,10 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-rpc
     dest: ./resources/[spz]/spz-rpc
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-vehfunc
+    dest: ./resources/[spz]/spz-vehfunc
 
   - action: download_file
     url: https://github.com/SPiceZ21/spz-stance/releases/latest/download/spz-stance.zip
