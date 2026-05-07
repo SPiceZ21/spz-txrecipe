@@ -1,10 +1,11 @@
 name: SPiceZ-Core Racing
-version: "2.3.3"
+version: "2.4.0"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
   Installs all dependencies, SPZ modules, database schema,
   and a production-ready server.cfg in one step.
+  v2.4.0: spz-leaderboard absorbed into spz-races; spz-tablet replaces standalone UI scripts.
 
 variables:
   spzDebug: "false"
@@ -99,10 +100,10 @@ tasks:
     dest: ./resources/[spz]/spz-races
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-leaderboard/releases/latest/download/spz-leaderboard.zip
-    path: ./tmp/spz-leaderboard.zip
+    url: https://github.com/SPiceZ21/spz-tablet/releases/latest/download/spz-tablet.zip
+    path: ./tmp/spz-tablet.zip
   - action: unzip
-    src: ./tmp/spz-leaderboard.zip
+    src: ./tmp/spz-tablet.zip
     dest: ./resources/[spz]
 
   - action: download_github
