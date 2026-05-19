@@ -157,6 +157,10 @@ tasks:
     src: https://github.com/SPiceZ21/spz-vehfunc
     dest: ./resources/[spz]/spz-vehfunc
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-speedcam
+    dest: ./resources/[spz]/spz-speedcam
+
   - action: download_file
     url: https://github.com/SPiceZ21/spz-stance/releases/latest/download/spz-stance.zip
     path: ./tmp/spz-stance.zip
