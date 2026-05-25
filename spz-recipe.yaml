@@ -51,6 +51,13 @@ tasks:
     src: ./tmp/ox_lib.zip
     dest: ./resources/[dependencies]
 
+  - action: download_file
+    url: https://github.com/iLLeniumStudios/illenium-appearance/releases/latest/download/illenium-appearance.zip
+    path: ./tmp/illenium-appearance.zip
+  - action: unzip
+    src: ./tmp/illenium-appearance.zip
+    dest: ./resources/[dependencies]
+
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
     dest: ./resources/[dependencies]/pma-voice
