@@ -67,10 +67,6 @@ tasks:
     dest: ./resources/[dependencies]/screenshot-basic
 
   # ── 5. SPiceZ-Core Modules ────────────────────────────────────────────────────
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-lib
-    dest: ./resources/[spz]/spz-lib
-
   # Modules with Production Releases (UI Built)
   - action: download_file
     url: https://github.com/SPiceZ21/spz-loading/releases/latest/download/spz-loading.zip
@@ -174,13 +170,6 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-speedcam
     dest: ./resources/[spz]/spz-speedcam
-
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-stance/releases/latest/download/spz-stance.zip
-    path: ./tmp/spz-stance.zip
-  - action: unzip
-    src: ./tmp/spz-stance.zip
-    dest: ./resources/[spz]
 
 
 # - action: download_github
