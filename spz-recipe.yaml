@@ -102,13 +102,6 @@ tasks:
     src: https://github.com/SPiceZ21/spz-races
     dest: ./resources/[spz]/spz-races
 
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-tablet/releases/latest/download/spz-tablet.zip
-    path: ./tmp/spz-tablet.zip
-  - action: unzip
-    src: ./tmp/spz-tablet.zip
-    dest: ./resources/[spz]
-
   - action: download_github
     src: https://github.com/SPiceZ21/spz-progression
     dest: ./resources/[spz]/spz-progression
@@ -125,13 +118,6 @@ tasks:
     path: ./tmp/spz-raceUI.zip
   - action: unzip
     src: ./tmp/spz-raceUI.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-orb/releases/latest/download/spz-orb.zip
-    path: ./tmp/spz-orb.zip
-  - action: unzip
-    src: ./tmp/spz-orb.zip
     dest: ./resources/[spz]
 
   - action: download_file
