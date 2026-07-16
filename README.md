@@ -36,7 +36,7 @@ After running the recipe, you'll have a production-ready racing server with all 
 3. Paste the recipe URL:
 
    ```
-   https://raw.githubusercontent.com/SPiceZ-Core/spz-txrecipe/main/spz-recipe.yaml
+   https://raw.githubusercontent.com/SPiceZ21/spz-txrecipe/main/spz-recipe.yaml
    ```
 
 4. Follow the prompts to configure your server name, license key, and database connection.
@@ -49,37 +49,50 @@ After running the recipe, you'll have a production-ready racing server with all 
 ### Resource Downloads
 - `cfx-server-data` — base server data
 - `oxmysql` — MySQL async driver
-- `ox_lib` — shared utility library
+- `ox_lib` — shared library (callbacks, notifications, menus, dialogs)
+- `fivem-appearance` — standalone character creator and clothing
+- `pma-voice` — proximity voice
+- `screenshot-basic`, `vMenu`
 
 ### SPiceZ Module Installation
 
-All core `spz-*` modules installed in the correct load order:
-
-```
-spz-lib → spz-rpc → spz-loading → spz-core → spz-identity → spz-vehicles → spz-races → spz-progression → spz-raceUI → spz-orb → spz-stance
-```
+All `spz-*` modules are installed and written into `server.cfg` in dependency
+order — `spz-rpc` → `spz-loading` → `spz-core` → `spz-identity` →
+`spz-appearance` → `spz-spawn`, then the racing modules
+(`spz-speedcam`, `spz-vehicles`, `spz-races`, `spz-progression`, `spz-nametag`,
+`spz-poll`, `spz-raceUI`, `spz-leaderboard`, `spz-carspawner`, `spz-fpscap`,
+`spz-speedometer`, `spz-nos`, `spz-vehfunc`), with `vMenu` last.
 
 ### Database Initialization
 
-Creates 8 essential tables:
+The recipe only stores the connection credentials (`connect_database`). The
+schema is owned by **spz-core**: every file in `spz-core/migrations/` is applied
+on first boot and recorded in the `spz_migrations` ledger, so restarts and
+upgrades are no-ops rather than re-imports.
 
 | Table | Purpose |
 |---|---|
 | `players` | Player profiles, stats, license tiers |
 | `crews` | Crew groups and ownership |
 | `driver_licenses` | License unlock history per player |
-| `economy_transactions` | Full credits ledger |
+| `vehicle_customizations` | Saved per-vehicle cosmetic setups |
 | `race_sessions` | Per-race metadata |
 | `race_results` | Per-player race results |
 | `track_records` | Personal bests per track and class |
-| `owned_vehicles` | Garage vehicle registry |
-| `spz_stance` | Vehicle stance and suspension settings |
+| `economy_transactions` | Full credits ledger |
+| `player_outfits` | Saved personal outfits |
+| `player_badges` | Awarded badges |
+| `speedcam_bests` | Speed camera personal bests and records |
+
+To change the schema, add a new numbered file to `spz-core/migrations/` and list
+it in `spz-core/server/migrations.lua`. Never edit a migration that has shipped.
 
 ### Auto-Generated `server.cfg`
 
 The recipe writes a production-ready config including:
 
-- `sv_enforceGameBuild 3095` (Agents of Sabotage build)
+- `sv_enforceGameBuild 3407`
+- `sv_stateBagStrictMode true` (clients cannot write replicated state bags)
 - Pre-configured ACE permissions for `group.admin`
 - All resources loading in the correct dependency order
 - Commented sections for easy customization
@@ -104,33 +117,36 @@ If you prefer to install without txAdmin, follow the manual load order:
 # ── Dependencies ──────────────────────────────────────
 ensure oxmysql
 ensure ox_lib
+ensure fivem-appearance
+ensure pma-voice
 ensure screenshot-basic        # optional
 
 # ── SPiceZ Core ───────────────────────────────────────
-ensure spz-lib
 ensure spz-rpc
 ensure spz-loading
 ensure spz-core
-
-# ── Modules ───────────────────────────────────────────
 ensure spz-identity
+ensure spz-appearance
+ensure spz-spawn
+
+# ── Racing Modules ────────────────────────────────────
+ensure spz-speedcam
 ensure spz-vehicles
-ensure spz-economy
-ensure spz-garage
-ensure spz-tuning
 ensure spz-races
 ensure spz-progression
+ensure spz-nametag
+ensure spz-poll
+ensure spz-raceUI
 ensure spz-leaderboard
+ensure spz-carspawner
+ensure spz-physics
+ensure spz-fpscap
+ensure spz-speedometer
 ensure spz-nos
-ensure spz-stance
-ensure spz-orb
-ensure spz-weather             # optional
-
-# ── UI ────────────────────────────────────────────────
-ensure spz-hud
+ensure spz-vehfunc
 
 # ── Admin (always last) ───────────────────────────────
-ensure spz-admin
+ensure vMenu
 ```
 
 ---
@@ -155,15 +171,16 @@ After the recipe completes, these files are the primary places to tune your serv
 |---|---|
 | `resources/[spz]/spz-core/config.lua` | Core settings (intermission time, max players, allowed classes) |
 | `resources/[spz]/spz-races/config.lua` | Race settings (poll duration, timeout, cycle order) |
-| `resources/[spz]/spz-hud/config.lua` | HUD display settings (units, animation durations) |
+| `resources/[spz]/spz-physics/config.lua` | Powertrain simulation, gearing, PP rating |
+| `resources/[spz]/spz-speedometer/config.lua` | Speedometer units and display |
 | `server.cfg` | ACE permissions, RCON password, server name |
 
 ---
 
 <div align="center">
 
-*Part of the [SPiceZ-Core](https://github.com/SPiceZ-Core) ecosystem*
+*Part of the [SPiceZ-Core](https://github.com/SPiceZ21) ecosystem*
 
-**[Docs](https://github.com/SPiceZ-Core/spz-docs) · [Discord](https://discord.gg/) · [Issues](https://github.com/SPiceZ-Core/spz-txrecipe/issues)**
+**[Docs](https://github.com/SPiceZ21/spz-docs) · [Discord](https://discord.gg/) · [Issues](https://github.com/SPiceZ21/spz-txrecipe/issues)**
 
 </div>

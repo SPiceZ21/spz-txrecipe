@@ -1,11 +1,13 @@
 name: SPiceZ-Core Racing
-version: "2.4.0"
+version: "3.0.0"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
-  Installs all dependencies, SPZ modules, database schema,
-  and a production-ready server.cfg in one step.
-  v2.4.0: spz-leaderboard absorbed into spz-races; spz-tablet replaces standalone UI scripts.
+  Installs all dependencies, SPZ modules, and a production-ready
+  server.cfg in one step. The schema applies itself on first boot.
+  v3.0.0: spz-lib dropped for ox_lib; illenium-appearance replaced by
+  fivem-appearance; spz-orb/spz-stance/spz-tablet removed; schema moved
+  to spz-core migrations.
 
 variables:
   spzDebug: "false"
@@ -25,9 +27,10 @@ tasks:
     dest: ./resources/[cfx-default]
 
   # ── 3. Database ───────────────────────────────────────────────────────────────
+  # Only the connection is set up here. The schema is owned by spz-core:
+  # spz-core/migrations/*.sql are applied automatically on first boot and
+  # tracked in the `spz_migrations` table (idempotent, safe on every restart).
   - action: connect_database
-  - action: query_database
-    file: ./tmp/recipe/spz-core.sql
 
   # ── 4. Dependencies ───────────────────────────────────────────────────────────
   - action: download_file
@@ -159,6 +162,14 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-speedcam
     dest: ./resources/[spz]/spz-speedcam
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-leaderboard
+    dest: ./resources/[spz]/spz-leaderboard
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-fpscap
+    dest: ./resources/[spz]/spz-fpscap
 
 
 # - action: download_github
