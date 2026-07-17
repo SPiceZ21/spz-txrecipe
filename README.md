@@ -141,6 +141,7 @@ ensure spz-leaderboard
 ensure spz-carspawner
 ensure spz-physics
 ensure spz-fpscap
+ensure spz-raceline
 ensure spz-speedometer
 ensure spz-nos
 ensure spz-vehfunc
