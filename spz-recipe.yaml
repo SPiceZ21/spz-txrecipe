@@ -171,6 +171,10 @@ tasks:
     src: https://github.com/SPiceZ21/spz-fpscap
     dest: ./resources/[spz]/spz-fpscap
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-tunners
+    dest: ./resources/[spz]/spz-tunners
+
 
 # - action: download_github
 #   src: https://github.com/SPiceZ21/spz-admin
