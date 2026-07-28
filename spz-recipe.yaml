@@ -72,6 +72,10 @@ tasks:
     src: https://github.com/citizenfx/screenshot-basic
     dest: ./resources/[dependencies]/screenshot-basic
 
+  - action: download_github
+    src: https://github.com/itschip/screencapture
+    dest: ./resources/[dependencies]/screencapture
+
   # ── 5. SPiceZ-Core Modules ────────────────────────────────────────────────────
   # Modules with Production Releases (UI Built)
   - action: download_file
