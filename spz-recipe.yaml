@@ -54,15 +54,14 @@ tasks:
     src: ./tmp/ox_lib.zip
     dest: ./resources/[dependencies]
 
-  # fivem-appearance: standalone, no framework required.
-  # Pinned to v1.2.1 — the last release shipped as .zip (1.3.x ships .rar,
-  # which the recipe unzip action cannot extract).
-  - action: download_file
-    url: https://github.com/pedr0fontoura/fivem-appearance/releases/download/v1.2.1/fivem-appearance.zip
-    path: ./tmp/fivem-appearance.zip
-  - action: unzip
-    src: ./tmp/fivem-appearance.zip
-    dest: ./resources/[dependencies]
+  # fivem-appearance: SPiceZ fork (standalone, no framework required).
+  # Pulls OUR built fork instead of upstream v1.2.1 — it carries the preview
+  # flicker fix, the redesigned SPiceZ UI, the cloth thumbnail grid and 3D
+  # drag-rotate. The repo must have the built bundles committed (game/dist +
+  # web/dist); the recipe clones it as-is (no build step here).
+  - action: download_github
+    src: https://github.com/SPiceZ21/fivem-appearance
+    dest: ./resources/[dependencies]/fivem-appearance
 
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
