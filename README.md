@@ -61,7 +61,7 @@ order — `spz-rpc` → `spz-loading` → `spz-core` → `spz-identity` →
 `spz-appearance` → `spz-spawn`, then the racing modules
 (`spz-speedcam`, `spz-vehicles`, `spz-races`, `spz-progression`, `spz-nametag`,
 `spz-poll`, `spz-raceUI`, `spz-leaderboard`, `spz-carspawner`, `spz-fpscap`,
-`spz-speedometer`, `spz-nos`, `spz-vehfunc`), with `vMenu` last.
+`spz-speedometer`, `spz-nos`, `spz-vehfunc`, `spz-tunners`, `spz-spectate`, `spz-betting`), with `vMenu` last.
 
 ### Database Initialization
 
@@ -145,6 +145,9 @@ ensure spz-raceline
 ensure spz-speedometer
 ensure spz-nos
 ensure spz-vehfunc
+ensure spz-tunners
+ensure spz-spectate
+ensure spz-betting
 
 # ── Admin (always last) ───────────────────────────────
 ensure vMenu

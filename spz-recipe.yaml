@@ -179,10 +179,13 @@ tasks:
     src: https://github.com/SPiceZ21/spz-tunners
     dest: ./resources/[spz]/spz-tunners
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-spectate
+    dest: ./resources/[spz]/spz-spectate
 
-# - action: download_github
-#   src: https://github.com/SPiceZ21/spz-admin
-#   dest: ./resources/[spz]/spz-admin
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-betting
+    dest: ./resources/[spz]/spz-betting
 
   # ── 6. Branding Assets ────────────────────────────────────────────────────────
   - action: copy_path
