@@ -44,12 +44,12 @@ production-ready config in the correct load order.
 order: `spz-rpc` → `spz-loading` → `spz-core` → `spz-identity` → `spz-appearance` →
 `spz-spawn`, then `spz-speedcam`, `spz-vehicles`, `spz-races`, `spz-progression`,
 `spz-nametag`, `spz-poll`, `spz-raceUI`, `spz-leaderboard`, `spz-carspawner`, `spz-fpscap`,
-`spz-speedometer`, `spz-nos`, `spz-vehfunc`, `spz-tunners`, `spz-spectate`, `spz-betting`
-— with `vMenu` last.
+`spz-raceline`, `spz-speedometer`, `spz-nos`, `spz-vehfunc`, `spz-tunners`, `spz-spectate`,
+`spz-betting` — with `vMenu` last.
 
-> **Known gap:** `server.cfg` also ensures `spz-physics` and `spz-raceline`, but
-> `spz-recipe.yaml` does not download them. Install those two manually, or comment out
-> their `ensure` lines, until the recipe adds the download steps.
+> **Not included:** `spz-physics` is not downloaded by the recipe. Its `ensure` line in
+> `server.cfg` ships commented out — install the resource manually and uncomment the line
+> if you want the powertrain simulation.
 
 ## Database
 
