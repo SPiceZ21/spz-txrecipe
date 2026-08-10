@@ -186,6 +186,10 @@ tasks:
     src: https://github.com/SPiceZ21/spz-betting
     dest: ./resources/[spz]/spz-betting
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-raceline
+    dest: ./resources/[spz]/spz-raceline
+
   # ── 6. Branding Assets ────────────────────────────────────────────────────────
   - action: copy_path
     src: ./tmp/recipe/Logo.png
