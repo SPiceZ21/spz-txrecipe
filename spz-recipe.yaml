@@ -151,10 +151,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_github
-    src: https://github.com/SPiceZ21/spz-nos
-    dest: ./resources/[spz]/spz-nos
-
-  - action: download_github
     src: https://github.com/SPiceZ21/spz-rpc
     dest: ./resources/[spz]/spz-rpc
 
@@ -185,6 +181,14 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-betting
     dest: ./resources/[spz]/spz-betting
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-crew
+    dest: ./resources/[spz]/spz-crew
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-discord
+    dest: ./resources/[spz]/spz-discord
 
   - action: download_github
     src: https://github.com/SPiceZ21/spz-raceline

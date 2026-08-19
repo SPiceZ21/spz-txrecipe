@@ -44,7 +44,7 @@ production-ready config in the correct load order.
 order: `spz-rpc` → `spz-loading` → `spz-core` → `spz-identity` → `spz-appearance` →
 `spz-spawn`, then `spz-speedcam`, `spz-vehicles`, `spz-races`, `spz-progression`,
 `spz-nametag`, `spz-poll`, `spz-raceUI`, `spz-leaderboard`, `spz-carspawner`, `spz-fpscap`,
-`spz-raceline`, `spz-speedometer`, `spz-nos`, `spz-vehfunc`, `spz-tunners`, `spz-spectate`,
+`spz-raceline`, `spz-speedometer`, `spz-vehfunc`, `spz-tunners`, `spz-spectate`,
 `spz-betting` — with `vMenu` last.
 
 > **Not included:** `spz-physics` is not downloaded by the recipe. Its `ensure` line in
