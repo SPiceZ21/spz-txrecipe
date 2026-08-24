@@ -47,12 +47,15 @@ tasks:
     src: ./tmp/vMenu.zip
     dest: ./resources/vMenu
 
-  - action: download_file
-    url: https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip
-    path: ./tmp/ox_lib.zip
-  - action: unzip
-    src: ./tmp/ox_lib.zip
-    dest: ./resources/[dependencies]
+  # ox_lib: SPiceZ fork (not the upstream overextended release) — it carries
+  # our own Mantine theme (web/src/theme/index.ts: orange accent, near-black
+  # surfaces, Panchang headings) so lib.notify/showContext/alertDialog/etc.
+  # render on-brand everywhere instead of stock ox_lib's default palette.
+  # web/build is committed, so this clones as-is like fivem-appearance below —
+  # no build step here.
+  - action: download_github
+    src: https://github.com/SPiceZ21/ox_lib
+    dest: ./resources/[dependencies]/ox_lib
 
   # fivem-appearance: SPiceZ fork (standalone, no framework required).
   # Pulls OUR built fork instead of upstream v1.2.1 — it carries the preview
@@ -187,12 +190,25 @@ tasks:
     dest: ./resources/[spz]/spz-crew
 
   - action: download_github
+    src: https://github.com/SPiceZ21/spz-chat
+    dest: ./resources/[spz]/spz-chat
+
+  - action: download_github
     src: https://github.com/SPiceZ21/spz-discord
     dest: ./resources/[spz]/spz-discord
 
   - action: download_github
     src: https://github.com/SPiceZ21/spz-raceline
     dest: ./resources/[spz]/spz-raceline
+
+  # ── 5b. Minigames ─────────────────────────────────────────────────────────────
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-hideseek
+    dest: ./resources/[spz]/spz-hideseek
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-pursuit
+    dest: ./resources/[spz]/spz-pursuit
 
   # ── 6. Branding Assets ────────────────────────────────────────────────────────
   - action: copy_path
