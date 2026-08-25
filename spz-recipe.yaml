@@ -132,12 +132,11 @@ tasks:
     src: ./tmp/spz-raceUI.zip
     dest: ./resources/[spz]
 
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-carspawner/releases/latest/download/spz-carspawner.zip
-    path: ./tmp/spz-carspawner.zip
-  - action: unzip
-    src: ./tmp/spz-carspawner.zip
-    dest: ./resources/[spz]
+  # No ui/ folder — pure ox_lib menu (lib.registerContext), nothing to build.
+  # Plain clone like the rest of the no-UI modules instead of a release zip.
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-carspawner
+    dest: ./resources/[spz]/spz-carspawner
 
   - action: download_file
     url: https://github.com/SPiceZ21/spz-nametag/releases/latest/download/spz-nametag.zip
