@@ -181,10 +181,6 @@ tasks:
     dest: ./resources/[spz]/spz-spectate
 
   - action: download_github
-    src: https://github.com/SPiceZ21/spz-betting
-    dest: ./resources/[spz]/spz-betting
-
-  - action: download_github
     src: https://github.com/SPiceZ21/spz-crew
     dest: ./resources/[spz]/spz-crew
 
