@@ -45,7 +45,7 @@ order: `spz-rpc` → `spz-loading` → `spz-core` → `spz-identity` → `spz-ap
 `spz-spawn`, then `spz-speedcam`, `spz-vehicles`, `spz-races`, `spz-progression`,
 `spz-nametag`, `spz-poll`, `spz-raceUI`, `spz-leaderboard`, `spz-carspawner`, `spz-fpscap`,
 `spz-raceline`, `spz-speedometer`, `spz-vehfunc`, `spz-tunners`, `spz-spectate`,
-`spz-betting` — with `vMenu` last.
+`spz-spectate` — with `vMenu` last.
 
 > **Not included:** `spz-physics` is not downloaded by the recipe. Its `ensure` line in
 > `server.cfg` ships commented out — install the resource manually and uncomment the line
