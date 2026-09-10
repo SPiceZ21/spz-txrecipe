@@ -1,5 +1,5 @@
 name: SPiceZ-Core Racing
-version: "3.0.0"
+version: "3.1.0"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
@@ -8,6 +8,8 @@ description: >
   v3.0.0: spz-lib dropped for ox_lib; illenium-appearance replaced by
   fivem-appearance; spz-orb/spz-stance/spz-tablet removed; schema moved
   to spz-core migrations.
+  v3.1.0: bob74_ipl added (fixes map holes); license key placeholder fixed
+  to {{svLicense}}, so the key entered in setup is actually applied.
 
 variables:
   spzDebug: "false"
@@ -77,6 +79,15 @@ tasks:
   - action: download_github
     src: https://github.com/itschip/screencapture
     dest: ./resources/[dependencies]/screencapture
+
+  # bob74_ipl: loads the IPLs and interiors the base map does not request on
+  # its own. Missing, they show up as holes, absent buildings and see-through
+  # ground. Pinned to a tag so a recipe run today and one next month produce
+  # the same world. Bump `ref` deliberately, not by accident.
+  - action: download_github
+    src: https://github.com/Bob74/bob74_ipl
+    ref: 2.7.0
+    dest: ./resources/[dependencies]/bob74_ipl
 
   # ── 5. SPiceZ-Core Modules ────────────────────────────────────────────────────
   # Modules with Production Releases (UI Built)
