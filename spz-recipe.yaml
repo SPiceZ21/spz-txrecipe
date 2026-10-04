@@ -207,6 +207,10 @@ tasks:
     src: https://github.com/SPiceZ21/spz-raceline
     dest: ./resources/[spz]/spz-raceline
 
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-analytics
+    dest: ./resources/[spz]/spz-analytics
+
   # ── 5b. Minigames ─────────────────────────────────────────────────────────────
   - action: download_github
     src: https://github.com/SPiceZ21/spz-hideseek
