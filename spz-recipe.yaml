@@ -12,7 +12,6 @@ description: >
   to {{svLicense}}, so the key entered in setup is actually applied.
 
 variables:
-  spzDebug: "false"
   recipeName: "SPiceZ-Core"
   recipeDescription: "Open-source FiveM Racing Framework"
 
@@ -210,6 +209,14 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-analytics
     dest: ./resources/[spz]/spz-analytics
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-admin
+    dest: ./resources/[spz]/spz-admin
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-replay
+    dest: ./resources/[spz]/spz-replay
 
   # ── 5b. Minigames ─────────────────────────────────────────────────────────────
   - action: download_github
