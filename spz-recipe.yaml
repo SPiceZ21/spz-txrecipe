@@ -1,5 +1,5 @@
 name: SPiceZ-Core Racing
-version: "3.3.0"
+version: "3.4.0"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
@@ -15,6 +15,7 @@ description: >
   spz-replay added; spz_debug removed.
   v3.3.0: minigames added from their release zips: spz-minigames (hub),
   spz-colorrush, spz-cyclone, spz-bomb, spz-demolition, spz-pursuit.
+  v3.4.0: spz-emotes added (emote menu, shared emotes, walk styles, moods).
 
 variables:
   recipeName: "SPiceZ-Core"
@@ -296,6 +297,10 @@ tasks:
   - action: download_github
     src: https://github.com/SPiceZ21/spz-replay
     dest: ./resources/[spz]/spz-replay
+
+  - action: download_github
+    src: https://github.com/SPiceZ21/spz-emotes
+    dest: ./resources/[spz]/spz-emotes
 
   # ── 5b. Minigames ─────────────────────────────────────────────────────────────
   # spz-minigames is the shared hub + HUD every game depends on; it goes first.
