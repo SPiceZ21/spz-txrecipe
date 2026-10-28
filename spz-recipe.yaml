@@ -1,5 +1,5 @@
 name: SPiceZ-Core Racing
-version: "3.2.0"
+version: "3.3.0"
 author: SPiceZ21
 description: >
   Open-source, modular racing framework for FiveM.
@@ -13,6 +13,8 @@ description: >
   v3.2.0: SPZ modules install from their latest GitHub release zip (versioned,
   UI prebuilt) instead of a git clone; spz-pausemenu, spz-admin and
   spz-replay added; spz_debug removed.
+  v3.3.0: minigames added from their release zips: spz-minigames (hub),
+  spz-colorrush, spz-cyclone, spz-bomb, spz-demolition, spz-pursuit.
 
 variables:
   recipeName: "SPiceZ-Core"
@@ -68,6 +70,18 @@ tasks:
   # web/dist); the recipe clones it as-is (no build step here).
   - action: download_github
     src: https://github.com/SPiceZ21/fivem-appearance
+    dest: ./resources/[dependencies]/fivem-appearance
+
+  # Clothing / face / tattoo thumbnails (S4 Clothes Renderer, lossless WebP).
+  # ~180 MB, so they ship as a release asset rather than in the git repo; the
+  # zip holds images/ and unpacks straight into the resource folder. Pinned to
+  # its own release tag (images-v1), not "latest": a code release tagged v*
+  # would become latest without this asset and break the download.
+  - action: download_file
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v1/fivem-appearance-images.zip
+    path: ./tmp/fivem-appearance-images.zip
+  - action: unzip
+    src: ./tmp/fivem-appearance-images.zip
     dest: ./resources/[dependencies]/fivem-appearance
 
   - action: download_github
@@ -284,13 +298,51 @@ tasks:
     dest: ./resources/[spz]/spz-replay
 
   # ── 5b. Minigames ─────────────────────────────────────────────────────────────
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-hideseek
-    dest: ./resources/[spz]/spz-hideseek
+  # spz-minigames is the shared hub + HUD every game depends on; it goes first.
+  # spz-bomb and spz-demolition also need the iak_demolition arena map, which
+  # is a third-party resource and is NOT installed here.
 
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-pursuit
-    dest: ./resources/[spz]/spz-pursuit
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-minigames/releases/latest/download/spz-minigames.zip
+    path: ./tmp/spz-minigames.zip
+  - action: unzip
+    src: ./tmp/spz-minigames.zip
+    dest: ./resources/[spz]
+
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-colorrush/releases/latest/download/spz-colorrush.zip
+    path: ./tmp/spz-colorrush.zip
+  - action: unzip
+    src: ./tmp/spz-colorrush.zip
+    dest: ./resources/[spz]
+
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-cyclone/releases/latest/download/spz-cyclone.zip
+    path: ./tmp/spz-cyclone.zip
+  - action: unzip
+    src: ./tmp/spz-cyclone.zip
+    dest: ./resources/[spz]
+
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-bomb/releases/latest/download/spz-bomb.zip
+    path: ./tmp/spz-bomb.zip
+  - action: unzip
+    src: ./tmp/spz-bomb.zip
+    dest: ./resources/[spz]
+
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-demolition/releases/latest/download/spz-demolition.zip
+    path: ./tmp/spz-demolition.zip
+  - action: unzip
+    src: ./tmp/spz-demolition.zip
+    dest: ./resources/[spz]
+
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-pursuit/releases/latest/download/spz-pursuit.zip
+    path: ./tmp/spz-pursuit.zip
+  - action: unzip
+    src: ./tmp/spz-pursuit.zip
+    dest: ./resources/[spz]
 
   # ── 6. Branding Assets ────────────────────────────────────────────────────────
   - action: copy_path
