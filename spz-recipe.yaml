@@ -200,13 +200,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-rpc/releases/latest/download/spz-rpc.zip
-    path: ./tmp/spz-rpc.zip
-  - action: unzip
-    src: ./tmp/spz-rpc.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-vehfunc/releases/latest/download/spz-vehfunc.zip
     path: ./tmp/spz-vehfunc.zip
   - action: unzip
