@@ -165,13 +165,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-speedometer/releases/latest/download/spz-speedometer.zip
-    path: ./tmp/spz-speedometer.zip
-  - action: unzip
-    src: ./tmp/spz-speedometer.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-fpscap/releases/latest/download/spz-fpscap.zip
     path: ./tmp/spz-fpscap.zip
   - action: unzip
@@ -198,13 +191,6 @@ tasks:
     path: ./tmp/spz-chat.zip
   - action: unzip
     src: ./tmp/spz-chat.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-pausemenu/releases/latest/download/spz-pausemenu.zip
-    path: ./tmp/spz-pausemenu.zip
-  - action: unzip
-    src: ./tmp/spz-pausemenu.zip
     dest: ./resources/[spz]
 
   - action: download_file
