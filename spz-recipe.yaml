@@ -158,13 +158,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-nametag/releases/latest/download/spz-nametag.zip
-    path: ./tmp/spz-nametag.zip
-  - action: unzip
-    src: ./tmp/spz-nametag.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-fpscap/releases/latest/download/spz-fpscap.zip
     path: ./tmp/spz-fpscap.zip
   - action: unzip
@@ -184,13 +177,6 @@ tasks:
     path: ./tmp/spz-hud.zip
   - action: unzip
     src: ./tmp/spz-hud.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-chat/releases/latest/download/spz-chat.zip
-    path: ./tmp/spz-chat.zip
-  - action: unzip
-    src: ./tmp/spz-chat.zip
     dest: ./resources/[spz]
 
   - action: download_file
@@ -217,10 +203,6 @@ tasks:
   - action: unzip
     src: ./tmp/spz-admin.zip
     dest: ./resources/[spz]
-
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-emotes
-    dest: ./resources/[spz]/spz-emotes
 
   # ── 5b. Minigames ─────────────────────────────────────────────────────────────
   # spz-minigames is the shared hub + HUD every game depends on; it goes first.
