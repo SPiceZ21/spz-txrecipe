@@ -22,6 +22,7 @@ description: >
   spz-raceUI, spz-poll, spz-leaderboard, spz-progression, spz-spectate,
   spz-replay, spz-speedcam into spz-races; spz-carspawner, spz-tunners,
   spz-vehfunc into spz-vehicles; spz-log, spz-rpc into spz-discord.
+  Appearance thumbnails split into 7 downloads (one 170 MB file timed out).
 
 variables:
   recipeName: "SPiceZ-Core"
@@ -80,15 +81,52 @@ tasks:
     dest: ./resources/[dependencies]/fivem-appearance
 
   # Clothing / face / tattoo thumbnails (S4 Clothes Renderer, lossless WebP).
-  # ~180 MB, so they ship as a release asset rather than in the git repo; the
-  # zip holds images/ and unpacks straight into the resource folder. Pinned to
-  # its own release tag (images-v1), not "latest": a code release tagged v*
-  # would become latest without this asset and break the download.
+  # ~180 MB, so they ship as release assets rather than in the git repo. Split
+  # into 7 zips of ~25 MB: txAdmin gives each download 150 s, and one 170 MB
+  # file timed out on slower connections. Each zip holds part of images/ and
+  # unpacks into the same folder. Pinned to their own release tag (images-v2),
+  # not "latest": a code release tagged v* would become latest without them.
   - action: download_file
-    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v1/fivem-appearance-images.zip
-    path: ./tmp/fivem-appearance-images.zip
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v2/fivem-appearance-images-1.zip
+    path: ./tmp/fivem-appearance-images-1.zip
   - action: unzip
-    src: ./tmp/fivem-appearance-images.zip
+    src: ./tmp/fivem-appearance-images-1.zip
+    dest: ./resources/[dependencies]/fivem-appearance
+  - action: download_file
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v2/fivem-appearance-images-2.zip
+    path: ./tmp/fivem-appearance-images-2.zip
+  - action: unzip
+    src: ./tmp/fivem-appearance-images-2.zip
+    dest: ./resources/[dependencies]/fivem-appearance
+  - action: download_file
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v2/fivem-appearance-images-3.zip
+    path: ./tmp/fivem-appearance-images-3.zip
+  - action: unzip
+    src: ./tmp/fivem-appearance-images-3.zip
+    dest: ./resources/[dependencies]/fivem-appearance
+  - action: download_file
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v2/fivem-appearance-images-4.zip
+    path: ./tmp/fivem-appearance-images-4.zip
+  - action: unzip
+    src: ./tmp/fivem-appearance-images-4.zip
+    dest: ./resources/[dependencies]/fivem-appearance
+  - action: download_file
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v2/fivem-appearance-images-5.zip
+    path: ./tmp/fivem-appearance-images-5.zip
+  - action: unzip
+    src: ./tmp/fivem-appearance-images-5.zip
+    dest: ./resources/[dependencies]/fivem-appearance
+  - action: download_file
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v2/fivem-appearance-images-6.zip
+    path: ./tmp/fivem-appearance-images-6.zip
+  - action: unzip
+    src: ./tmp/fivem-appearance-images-6.zip
+    dest: ./resources/[dependencies]/fivem-appearance
+  - action: download_file
+    url: https://github.com/SPiceZ21/fivem-appearance/releases/download/images-v2/fivem-appearance-images-7.zip
+    path: ./tmp/fivem-appearance-images-7.zip
+  - action: unzip
+    src: ./tmp/fivem-appearance-images-7.zip
     dest: ./resources/[dependencies]/fivem-appearance
 
   - action: download_github
