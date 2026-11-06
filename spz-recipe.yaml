@@ -158,13 +158,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-progression/releases/latest/download/spz-progression.zip
-    path: ./tmp/spz-progression.zip
-  - action: unzip
-    src: ./tmp/spz-progression.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-nametag/releases/latest/download/spz-nametag.zip
     path: ./tmp/spz-nametag.zip
   - action: unzip
@@ -179,24 +172,10 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-speedcam/releases/latest/download/spz-speedcam.zip
-    path: ./tmp/spz-speedcam.zip
-  - action: unzip
-    src: ./tmp/spz-speedcam.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-fpscap/releases/latest/download/spz-fpscap.zip
     path: ./tmp/spz-fpscap.zip
   - action: unzip
     src: ./tmp/spz-fpscap.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-spectate/releases/latest/download/spz-spectate.zip
-    path: ./tmp/spz-spectate.zip
-  - action: unzip
-    src: ./tmp/spz-spectate.zip
     dest: ./resources/[spz]
 
   - action: download_file
@@ -252,10 +231,6 @@ tasks:
   - action: unzip
     src: ./tmp/spz-admin.zip
     dest: ./resources/[spz]
-
-  - action: download_github
-    src: https://github.com/SPiceZ21/spz-replay
-    dest: ./resources/[spz]/spz-replay
 
   - action: download_github
     src: https://github.com/SPiceZ21/spz-emotes
