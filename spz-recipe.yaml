@@ -165,20 +165,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-poll/releases/latest/download/spz-poll.zip
-    path: ./tmp/spz-poll.zip
-  - action: unzip
-    src: ./tmp/spz-poll.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-raceUI/releases/latest/download/spz-raceUI.zip
-    path: ./tmp/spz-raceUI.zip
-  - action: unzip
-    src: ./tmp/spz-raceUI.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-carspawner/releases/latest/download/spz-carspawner.zip
     path: ./tmp/spz-carspawner.zip
   - action: unzip
@@ -214,13 +200,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-leaderboard/releases/latest/download/spz-leaderboard.zip
-    path: ./tmp/spz-leaderboard.zip
-  - action: unzip
-    src: ./tmp/spz-leaderboard.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-fpscap/releases/latest/download/spz-fpscap.zip
     path: ./tmp/spz-fpscap.zip
   - action: unzip
@@ -246,6 +225,14 @@ tasks:
     path: ./tmp/spz-crew.zip
   - action: unzip
     src: ./tmp/spz-crew.zip
+    dest: ./resources/[spz]
+
+  # spz-hud: every UI page (the other resources' UIs are hosted in it).
+  - action: download_file
+    url: https://github.com/SPiceZ21/spz-hud/releases/latest/download/spz-hud.zip
+    path: ./tmp/spz-hud.zip
+  - action: unzip
+    src: ./tmp/spz-hud.zip
     dest: ./resources/[spz]
 
   - action: download_file
