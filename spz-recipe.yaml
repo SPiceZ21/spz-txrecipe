@@ -165,13 +165,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-carspawner/releases/latest/download/spz-carspawner.zip
-    path: ./tmp/spz-carspawner.zip
-  - action: unzip
-    src: ./tmp/spz-carspawner.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-nametag/releases/latest/download/spz-nametag.zip
     path: ./tmp/spz-nametag.zip
   - action: unzip
@@ -186,13 +179,6 @@ tasks:
     dest: ./resources/[spz]
 
   - action: download_file
-    url: https://github.com/SPiceZ21/spz-vehfunc/releases/latest/download/spz-vehfunc.zip
-    path: ./tmp/spz-vehfunc.zip
-  - action: unzip
-    src: ./tmp/spz-vehfunc.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
     url: https://github.com/SPiceZ21/spz-speedcam/releases/latest/download/spz-speedcam.zip
     path: ./tmp/spz-speedcam.zip
   - action: unzip
@@ -204,13 +190,6 @@ tasks:
     path: ./tmp/spz-fpscap.zip
   - action: unzip
     src: ./tmp/spz-fpscap.zip
-    dest: ./resources/[spz]
-
-  - action: download_file
-    url: https://github.com/SPiceZ21/spz-tunners/releases/latest/download/spz-tunners.zip
-    path: ./tmp/spz-tunners.zip
-  - action: unzip
-    src: ./tmp/spz-tunners.zip
     dest: ./resources/[spz]
 
   - action: download_file
